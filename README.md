@@ -21,6 +21,25 @@ Clone, generate environment for your favorite build system (we use CMake as abst
     % cmake ..
     % cmake --build .
 
+or use Docker to build:
+```sh
+docker build -t bt-migrate .
+```
+
+and then run, e.g.:
+```sh
+docker run \
+  --rm \
+  -v /mnt/user/appdata/transmission:/config/transmission \
+  -v /mnt/user/appdata/deluge:/config/deluge \
+  bt-migrate \
+  --source deluge \
+  --source-dir /config/deluge \
+  --target transmission \
+  --target-dir /config/transmission \
+  --dry-run
+```
+
 Running
 =======
 
